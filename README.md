@@ -1,6 +1,6 @@
 # COSP-Net
 
-This repository contains COSP and COSP-Adaptive for scanpath prediction on COD10K-style camouflage images.
+Camouflage-Oriented Scanpath Prediction via Uncertainty-Guided Dual-Stream Transformer
 
 ## 1. Environment
 
@@ -21,24 +21,17 @@ pip install numpy scipy pandas matplotlib opencv-python pillow tqdm tensorboard
 pip install fvcore iopath pycocotools einops timm multimatch-gaze
 ```
 ## 2. Installation
-
 - Install [Detectron2](https://github.com/facebookresearch/detectron2)
 
 - Install MSDeformableAttention:
 
   ```bash
-  cd hat/pixel_decoder/ops
+  cd ./hat/pixel_decoder/ops
   sh make.sh
-  cd ../../..
   ```
 
-- Download pretrained model weights with the following Python code:
-
-  ```python
-    import os
-    import wget
-    import gdown
-
+ - Download pretrained model weights (ResNet-50 and Deformable Transformer) with the following python code
+  ```
     if not os.path.exists("./pretrained_models/"):
         os.mkdir('./pretrained_models')
 
@@ -61,11 +54,11 @@ pip install fvcore iopath pycocotools einops timm multimatch-gaze
     wget.download(url, "pretrained_models/res2net/res2net50_v1b_26w_4s-3cf99910.pth")
   ```
 
-## 3. Dataset Layout
+## 3. Dataset Preparation
 
 - Prepare the data following https://github.com/cvlab-stonybrook/Scanpath_Prediction.
 
-Coordinates are in the resized image space: `512 x 320`.
+Coordinates are in the resized image space：`512 x 320`.
 
 ## 4. Training
 
@@ -73,7 +66,7 @@ Train COSP-Adaptive:
 
 ```bash
 python train.py \
-  --hparams configs/cosp_camo_align_p4_a0p05_w0p02_free_15k.json \
+  --hparams configs/cosp_camo_align_p4_a0p05_w0p02_free.json \
   --dataset-root <dataset_root>  \
   --gpu-id 0
 ```
@@ -82,11 +75,10 @@ Train fixed-length COSP:
 
 ```bash
 python train.py \
-  --hparams configs/cosp_camo_align_p4_a0p05_w0p02_len8_30k_v2.json \
+  --hparams configs/cosp_camo_align_p4_a0p05_w0p02_len8.json \
   --dataset-root <dataset_root>  \
   --gpu-id 0
 ```
-
 
 ## 5. Evaluation
 
@@ -107,34 +99,13 @@ Evaluate Sequence Score under a fixed prediction budget:
 python eval_ss_budget.py \
   --cluster-path datasets/COD10K_real/clusters.npy \
   --asset-dirs \
-    assets/cosp_camo_align_p4_a0p05_w0p02_free_15k \
-    assets/cosp_camo_align_p4_a0p05_w0p02_len8_30k_v2 \
+    assets/cosp_camo_align_p4_a0p05_w0p02_free \
+    assets/cosp_camo_align_p4_a0p05_w0p02_len8 \
   --max-len 8 \
   --out-csv assets/ss_budget_eval.csv
 ```
 
-## 6. Minimal Release Checklist
-
-Keep these files for a clean COSP-only release:
-
-```text
-README.md
-LICENSE
-requirements.txt
-train.py
-eval_ss_budget.py
-configs/cod10k_real500.json
-configs/resnet50.yaml
-configs/cosp_camo_align_p4_a0p05_w0p02_free_15k.json
-configs/cosp_camo_align_p4_a0p05_w0p02_len8_30k_v2.json
-common/
-hat/
-pretrained_models/README.md
-```
-
-Large pretrained weights and trained checkpoints should be released through Git LFS or GitHub Releases instead of normal git commits.
-
-## 7. Acknowledgement
+## 6. Acknowledgement
 
 This implementation is based on the HAT codebase:
 
