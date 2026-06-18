@@ -16,7 +16,7 @@ import metrics as cosp_metrics  # noqa: E402
 
 
 DEFAULT_ASSET_DIRS = [
-    "assets/cod10k_real",
+    "assets/camoscan500",
     "assets/cosp_hat_baseline_len8",
     "assets/cosp_camo_memory_p4_a0p05_len8",
     "assets/cosp_camo_align_p4_a0p05_w0p02_len8_15k",
@@ -140,8 +140,8 @@ def main():
         description="Re-evaluate FV scanpath SS under a fixed prediction budget.")
     parser.add_argument(
         "--cluster-path",
-        default="datasets/COD10K_real/clusters.npy",
-        help="Path to COD10K_real clusters.npy.")
+        default="datasets/CamoScan-500/clusters.npy",
+        help="Path to CamoScan-500 clusters.npy.")
     parser.add_argument(
         "--max-len",
         type=int,

@@ -1,6 +1,6 @@
 {
 	"Data": {
-		"name": "COD10K",
+		"name": "CamoScan500",
 		"im_w": 512,
 		"im_h": 320,
 		"patch_num": [
@@ -82,7 +82,7 @@
 		"batch_size": 32,
 		"n_workers": 4,
 		"stop_criteria": "SASA",
-		"log_dir": "./assets/cod10k_real/",
+		"log_dir": "./assets/camoscan500/",
 		"transfer_learn": "none",
 		"freeze_trained_params": false,
         "resume_training": false,

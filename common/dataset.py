@@ -45,7 +45,7 @@ def process_data(target_trajs,
         rescale_flag = False # Use rescaled scanpaths
     elif hparams.Data.name == 'ALL':
         rescale_flag = False # Use rescaled scanpaths
-    elif hparams.Data.name == 'COD10K':
+    elif hparams.Data.name == 'CamoScan500':
         ori_h, ori_w = 320, 512
         rescale_flag = hparams.Data.im_h != ori_h
     else:

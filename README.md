@@ -57,18 +57,18 @@ pip install fvcore iopath pycocotools einops timm multimatch-gaze
 
 ## 3. Dataset Preparation
 
-Download the released COD10K_real scanpath dataset and place it under:
+Download the released CamoScan-500 scanpath dataset and place it under:
 
 ```text
 COSP-NET/
   datasets/
-    COD10K_real/
+    CamoScan-500/
 ```
 
 Expected dataset structure:
 
 ```text
-datasets/COD10K_real/
+datasets/CamoScan-500/
   images/
     train/                         # 300 camouflage images
     val/                           # 200 camouflage images
@@ -78,7 +78,7 @@ datasets/COD10K_real/
   split_json/
     scanpaths_train.json
     scanpaths_validation.json
-  scanpaths_cod10k_split_512x320.json
+  scanpaths_camoscan500_512x320.json
   split_map.json
   clusters.npy
 ```
@@ -92,7 +92,7 @@ Train COSP-Adaptive:
 ```bash
 python train.py \
   --hparams configs/cosp_camo_align_p4_a0p05_w0p02_free.json \
-  --dataset-root <dataset_root>  \
+  --dataset-root datasets/CamoScan-500 \
   --gpu-id 0
 ```
 
@@ -101,7 +101,7 @@ Train fixed-length COSP:
 ```bash
 python train.py \
   --hparams configs/cosp_camo_align_p4_a0p05_w0p02_len8.json \
-  --dataset-root <dataset_root>  \
+  --dataset-root datasets/CamoScan-500 \
   --gpu-id 0
 ```
 
@@ -111,8 +111,8 @@ Evaluate a trained checkpoint:
 
 ```bash
 python train.py \
-  --hparams configs/cosp_camo_align_p4_a0p05_w0p02_free_15k.json \
-  --dataset-root <dataset_root>  \
+  --hparams configs/cosp_camo_align_p4_a0p05_w0p02_free.json \
+  --dataset-root datasets/CamoScan-500 \
   --eval-only \
   --eval-mode greedy \
   --gpu-id 0
@@ -122,7 +122,7 @@ Evaluate Sequence Score under a fixed prediction budget:
 
 ```bash
 python eval_ss_budget.py \
-  --cluster-path datasets/COD10K_real/clusters.npy \
+  --cluster-path datasets/CamoScan-500/clusters.npy \
   --asset-dirs \
     assets/cosp_camo_align_p4_a0p05_w0p02_free \
     assets/cosp_camo_align_p4_a0p05_w0p02_len8 \

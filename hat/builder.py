@@ -74,9 +74,9 @@ def build(hparams, dataset_root, device, is_pretraining, is_eval=False, split=1)
                         f'mit1003_scanpaths_split{split}.json'), 'r') as json_file:
                 human_scanpaths = json.load(json_file)
             # dataset_root = join(dataset_root, 'MIT1003')
-        elif dataset_name == 'COD10K':
-            with open(join(dataset_root,  # 'COD10K'
-                        'scanpaths_cod10k_split_512x320.json'), 'r') as json_file:
+        elif dataset_name == 'CamoScan500':
+            with open(join(dataset_root,  # 'CamoScan500'
+                        'scanpaths_camoscan500_512x320.json'), 'r') as json_file:
                 human_scanpaths = json.load(json_file)
         elif dataset_name in ['COCO-Search18', 'COCO-Freeview']:
             with open(
