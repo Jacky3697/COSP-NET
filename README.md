@@ -57,9 +57,33 @@ pip install fvcore iopath pycocotools einops timm multimatch-gaze
 
 ## 3. Dataset Preparation
 
-- Prepare the data following https://github.com/cvlab-stonybrook/Scanpath_Prediction.
+Download the released COD10K_real scanpath dataset and place it under:
 
-Coordinates are in the resized image space：`512 x 320`.
+```text
+COSP-NET/
+  datasets/
+    COD10K_real/
+```
+
+Expected dataset structure:
+
+```text
+datasets/COD10K_real/
+  images/
+    train/                         # 300 camouflage images
+    val/                           # 200 camouflage images
+  maps/
+    train/                         # COD masks for training images
+    val/                           # COD masks for validation images
+  split_json/
+    scanpaths_train.json
+    scanpaths_validation.json
+  scanpaths_cod10k_split_512x320.json
+  split_map.json
+  clusters.npy
+```
+
+The scanpath annotations store fixation coordinates in the resized image space: `512 x 320`. The `maps/` directory contains binary COD masks. The `clusters.npy` file is used for Sequence Score evaluation.
 
 ## 4. Training
 
