@@ -98,7 +98,6 @@ datasets/CamoScan-500/
     scanpaths_train.json
     scanpaths_validation.json
   scanpaths_camoscan500_512x320.json
-  split_map.json
   clusters.npy
 ```
 
