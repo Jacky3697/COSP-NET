@@ -3,6 +3,8 @@
 Camouflage-Oriented Scanpath Prediction
 via Fixation-Aligned Camouflage Attention
 
+![CamoScan-500 examples](assets/camoscan500_overview.jpg)
+
 ## 1. Environment
 
 The experiments were run on Linux with CUDA GPUs.
@@ -57,7 +59,18 @@ pip install fvcore iopath pycocotools einops timm multimatch-gaze
 
 ## 3. Dataset Preparation
 
-Download the released CamoScan-500 scanpath dataset and place it under:
+The CamoScan-500 scanpath dataset is provided in this repository as split archives under `datasets/`.
+
+Reconstruct and extract the dataset:
+
+```bash
+cat datasets/CamoScan-500.tar.gz.part-* > CamoScan-500.tar.gz
+tar -xzf CamoScan-500.tar.gz
+mkdir -p datasets
+mv CamoScan-500 datasets/CamoScan-500
+```
+
+After extraction, the dataset should be placed under:
 
 ```text
 COSP-NET/
