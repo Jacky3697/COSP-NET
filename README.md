@@ -5,6 +5,12 @@ via Fixation-Aligned Camouflage Attention
 
 ![CamoScan-500 examples](assets/camoscan500_overview.jpg)
 
+**Figure 1.** Examples from CamoScan-500. Each image pair shows fixation density maps and scanpath annotations collected from human observers in camouflaged scenes.
+
+COSP-Net is a camouflage-oriented scanpath prediction framework for modeling human gaze behavior under object-background ambiguity. It introduces a camouflage-aware dual-stream encoder and a Fixation-Aligned Camouflage Attention (FACA) module to align camouflage-aware responses with human fixation distributions, enabling autoregressive scanpath generation in camouflaged scenes.
+
+This repository also releases **CamoScan-500**, a camouflage scanpath dataset containing 500 images with eye-tracking data collected from 23 participants. The dataset provides image-level scanpath annotations, COD masks, train/validation splits, and Sequence Score clusters for evaluating scanpath prediction under camouflage-induced visual ambiguity.
+
 ## 1. Environment
 
 The experiments were run on Linux with CUDA GPUs.
