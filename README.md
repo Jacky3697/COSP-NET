@@ -136,18 +136,6 @@ python train.py \
   --gpu-id 0
 ```
 
-Evaluate Sequence Score under a fixed prediction budget:
-
-```bash
-python eval_ss_budget.py \
-  --cluster-path datasets/CamoScan-500/clusters.npy \
-  --asset-dirs \
-    assets/cosp_camo_align_p4_a0p05_w0p02_free \
-    assets/cosp_camo_align_p4_a0p05_w0p02_len8 \
-  --max-len 8 \
-  --out-csv assets/ss_budget_eval.csv
-```
-
 ## 6. Acknowledgement
 
 This implementation is based on the HAT codebase:
